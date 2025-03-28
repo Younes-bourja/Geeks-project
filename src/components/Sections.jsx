@@ -1,4 +1,7 @@
 import { useState } from "react";
+import Header from "./Header"
+import Footer from "./Footer"
+import Hero from "./Hero"
 
 const articlesData = [
   {
@@ -41,6 +44,8 @@ const Sections = () => {
   };
 
   return (
+    <><Header/>
+    <Hero/>
     <section className="container mx-auto px-6 py-10">
       <h2 className="text-3xl font-bold text-center mb-8">Latest Articles</h2>
       <a href="/article" className="grid md:grid-cols-3 gap-8">
@@ -65,6 +70,8 @@ const Sections = () => {
         ))}
       </a>
     </section>
+    <Footer/>
+  </> 
   );
 };
 
