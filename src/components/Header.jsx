@@ -14,7 +14,7 @@ const Header = () => {
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-6">
           <a href="/" className="text-gray-700 hover:text-blue-500 font-medium">Home</a>
-          <a href="/blogs" className="text-gray-700 hover:text-blue-500 font-medium">Blogs</a>
+          <a href="/article" onClick={(e) => navigate(e, '/article')} className="text-gray-700 hover:text-blue-500 font-medium">Blogs</a>
           <a href="/about" className="text-gray-700 hover:text-blue-500 font-medium">About Us</a>
         </nav>
 

@@ -22,7 +22,7 @@
 
 .title {
     font-size: 3.5rem;
-    color: #2c3e50;
+    color: #dae2eb;
     margin-bottom: 1.5rem;
     transform: translateX(-100%);
     opacity: 0;
@@ -31,21 +31,23 @@
 
 .description {
     font-size: 1.2rem;
-    color: #34495e;
+    color: #d1dbe6;
     line-height: 1.6;
     margin-bottom: 2rem;
+
     transform: translateX(-100%);
     opacity: 0;
     transition: all 0.8s ease-out 0.2s;
 }
 
-.image-container {
-    flex: 1;
-    max-width: 500px;
-    transform: translateX(100%);
-    opacity: 0;
-    transition: all 0.8s ease-out;
+.hero {
+        background-image: url("https://images.pexels.com/photos/518543/pexels-photo-518543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+        background-size: cover;
+        background-position: center;
+
+    
 }
+
 
 .tree-image {
     width: 100%;

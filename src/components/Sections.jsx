@@ -5,6 +5,7 @@ const articlesData = [
     id: 1,
     title: "The Future of Artificial Intelligence",
     image: "https://images.pexels.com/photos/31341763/pexels-photo-31341763/free-photo-of-foret-d-hiver-noire-et-blanche-en-toscane.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     date: "March 28, 2025",
     author: "John Doe",
     comments: ["Great insights!", "Very informative!", "AI is amazing!"],
@@ -12,7 +13,8 @@ const articlesData = [
   {
     id: 2,
     title: "The Power of React and Tailwind CSS",
-    image: "https://source.unsplash.com/600x400/?code,computer",
+    image: "https://images.pexels.com/photos/31341763/pexels-photo-31341763/free-photo-of-foret-d-hiver-noire-et-blanche-en-toscane.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     date: "March 26, 2025",
     author: "Jane Smith",
     comments: ["Loved this article!", "I use Tailwind too!", "React is awesome!"],
@@ -20,7 +22,8 @@ const articlesData = [
   {
     id: 3,
     title: "How to Build Scalable Web Apps",
-    image: "https://source.unsplash.com/600x400/?website,developer",
+    image: "https://images.pexels.com/photos/31341763/pexels-photo-31341763/free-photo-of-foret-d-hiver-noire-et-blanche-en-toscane.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",    
     date: "March 24, 2025",
     author: "David Johnson",
     comments: ["Great tutorial!", "Very well explained!", "Will try this soon!"],
@@ -40,7 +43,7 @@ const Sections = () => {
   return (
     <section className="container mx-auto px-6 py-10">
       <h2 className="text-3xl font-bold text-center mb-8">Latest Articles</h2>
-      <div className="grid md:grid-cols-3 gap-8">
+      <a href="/article" className="grid md:grid-cols-3 gap-8">
         {articlesData.map((article) => (
           <div key={article.id} className="bg-white shadow-md rounded-lg overflow-hidden">
             <img src={article.image} alt={article.title} className="w-full h-48 object-cover" />
@@ -49,28 +52,18 @@ const Sections = () => {
               <p className="text-gray-500 text-sm">
                 📅 {article.date} | ✍ {article.author}
               </p>
-              <button
-                onClick={() => toggleComments(article.id)}
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-              >
-                {showComments[article.id] ? "Hide Comments" : "View Comments"}
-              </button>
+              <br />
+<hr />
 
-              {/* Comments Section */}
-              {showComments[article.id] && (
-                <div className="mt-4 p-2 bg-gray-100 rounded">
-                  <h4 className="font-semibold">Comments:</h4>
-                  <ul className="list-disc list-inside text-gray-700">
-                    {article.comments.map((comment, index) => (
-                      <li key={index} className="text-sm">💬 {comment}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+            <p className="text-gray-500 text-sm line-clamp-2 mt-1 w-148">
+{article.content}
+            </p>
+
+             
             </div>
           </div>
         ))}
-      </div>
+      </a>
     </section>
   );
 };
