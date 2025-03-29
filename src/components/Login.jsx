@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "./Header"
 import { useRef } from "react";
 import "../styles/Login.css";
 function Login (){
@@ -13,6 +13,9 @@ function Login (){
         refContainer.current.classList.remove("signShow");
       }
     return (
+       <>
+          
+          <Header/>
       <div
         className="min-h-screen overflow-x-hidden bg-cover bg-center "
         style={{
@@ -133,6 +136,7 @@ function Login (){
           </div>
         </div>
       </div>
+        </> 
     );
 }
 export default Login;
