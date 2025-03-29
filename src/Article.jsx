@@ -1,35 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import Header from "./components/Header"
-import Footer from "./components/Footer"
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { useParams } from "react-router-dom";
 
-
-const Article = () => {
-    const params = useParams();
-   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState({
-    name: '',
-    text: ''
-  });
-console.log(params);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (newComment.name.trim() && newComment.text.trim()) {
-      setComments([...comments, {
-        ...newComment,
-        date: new Date().toLocaleString()
-      }]);
-      setNewComment({ name: '', text: '' });
-    }
-  }
-  // Sample article data (replace with API/data fetching)
-  const article = {
-    title: "The Future of Web Development in 2024",
-    author: "Jane Developer",
-    date: "March 15, 2024",
-    readTime: "8 min read",
-    image: "https://images.pexels.com/photos/31341763/pexels-photo-31341763/free-photo-of-foret-d-hiver-noire-et-blanche-en-toscane.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    content: `
+// Sample article data (replace with API/data fetching)
+const article = {
+  title: "The Future of Web Development in 2024",
+  author: "Jane Developer",
+  date: "March 15, 2024",
+  readTime: "8 min read",
+  image:
+    "https://images.pexels.com/photos/31341763/pexels-photo-31341763/free-photo-of-foret-d-hiver-noire-et-blanche-en-toscane.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+  content: `
      
 What is Lorem Ipsum?
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -54,131 +36,165 @@ There are many variations of passages of Lorem Ipsum available, but the majority
 	Start with 'Lorem
 ipsum dolor sit amet...'
 
-    `
+    `,
+};
+
+const Article = () => {
+  const params = useParams();
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState({
+    name: "",
+    text: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (newComment.name.trim() && newComment.text.trim()) {
+      setComments([
+        ...comments,
+        {
+          ...newComment,
+          date: new Date().toLocaleString(),
+        },
+      ]);
+      setNewComment({ name: "", text: "" });
+    }
   };
-  
 
   return (
-    <><Header/>
-    <div className="max-w-4xl mt-10 mx-auto px-4 sm:px-6 lg:px-8 py-12">
-  
+    <>
+      <Header />
+      <div className="mx-auto mt-10 max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+        {/* Featured Image */}
+        <div className="relative mb-12 aspect-[16/9] overflow-hidden rounded-xl">
+          <img
+            src={article.image}
+            alt={article.title}
+            className="h-full w-full object-cover"
+          />
 
-      {/* Featured Image */}
-      <div className="relative mb-12 rounded-xl overflow-hidden aspect-[16/9]">
-        <img 
-          src={article.image} 
-          alt={article.title}
-          className="w-full h-full object-cover"
-        />
-
-        
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30" />
-      </div>
-          {/* Article Header */}
-      <header className="mb-12 mt-0">
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-          {article.title}
-        </h1>
-        
-        <div className="flex items-center space-x-4 text-gray-600">
-          <div className="flex items-center">
-            <span className="mr-2">By</span>
-            <span className="font-medium">{article.author}</span>
-          </div>
-          <span>•</span>
-          <time>{article.date}</time>
-          <span>•</span>
-          <span>{article.readTime}</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30" />
         </div>
-      </header>
+        {/* Article Header */}
+        <header className="mb-12 mt-0">
+          <h1 className="mb-4 text-4xl font-bold text-gray-900 sm:text-5xl">
+            {article.title} {params.aticleId}
+          </h1>
 
-      {/* Article Content */}
-      <article className="prose prose-lg max-w-none">
-        <div dangerouslySetInnerHTML={{ __html: article.content }} />
-      </article>
-
-      {/* Social Sharing */}
-      <div className="mt-12 flex space-x-4">
-        <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-          <span className="sr-only">Share on Twitter</span>
-          <svg className="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
-            {/* Twitter icon */}
-          </svg>
-        </button>
-        <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-          <span className="sr-only">Share on LinkedIn</span>
-          <svg className="w-6 h-6 text-blue-700" fill="currentColor" viewBox="0 0 24 24">
-            {/* LinkedIn icon */}
-          </svg>
-        </button>
-      </div>
-
-      {/* Author Bio */}
-      <section className="mt-12 pt-12 border-t border-gray-200">
-        <div className="flex items-center space-x-4">
-          <div className="w-16 h-16 rounded-full bg-gray-100"></div>
-          <div>
-            <h3 className="font-bold text-lg">{article.author}</h3>
-            <p className="text-gray-600">Senior Web Developer at Tech Corp</p>
-          </div>
-        </div>
-      </section> 
-      
-      
-       <section className="mt-12 pt-12 border-t border-gray-200">
-      <h2 className="text-2xl font-bold mb-6">Comments ({comments.length})</h2>
-
-      {/* Comment Form */}
-    
-
-      {/* Comments List */}
-      <div className="space-y-6">
-        {comments.map((comment, index) => (
-          <div key={index} className="p-4 bg-gray-50 rounded-lg">
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="font-semibold">{comment.name}</h3>
-              <span className="text-sm text-gray-500">{comment.date}</span>
+          <div className="flex items-center space-x-4 text-gray-600">
+            <div className="flex items-center">
+              <span className="mr-2">By</span>
+              <span className="font-medium">{article.author}</span>
             </div>
-            <p className="text-gray-700 whitespace-pre-wrap">{comment.text}</p>
+            <span>•</span>
+            <time>{article.date}</time>
+            <span>•</span>
+            <span>{article.readTime}</span>
           </div>
-        ))}
+        </header>
 
-        {comments.length === 0 && (
-          <p className="text-gray-500 text-center py-4">No comments yet. Be the first to comment!</p>
-        )}
-      </div>
-        <form onSubmit={handleSubmit} className="mb-8">
-        <div className="grid gap-4">
-          <input
-            type="text"
-            placeholder="Your name"
-            value={newComment.name}
-            onChange={(e) => setNewComment({...newComment, name: e.target.value})}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-          <textarea
-            placeholder="Write your comment..."
-            value={newComment.text}
-            onChange={(e) => setNewComment({...newComment, text: e.target.value})}
-            className="w-full px-4 py-2 border rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
-          />
-          <button
-            type="submit"
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors self-end"
-          >
-            Post Comment
+        {/* Article Content */}
+        <article className="prose prose-lg max-w-none">
+          <div dangerouslySetInnerHTML={{ __html: article.content }} />
+        </article>
+
+        {/* Social Sharing */}
+        <div className="mt-12 flex space-x-4">
+          <button className="rounded-full p-2 transition-colors hover:bg-gray-100">
+            <span className="sr-only">Share on Twitter</span>
+            <svg
+              className="h-6 w-6 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {/* Twitter icon */}
+            </svg>
+          </button>
+          <button className="rounded-full p-2 transition-colors hover:bg-gray-100">
+            <span className="sr-only">Share on LinkedIn</span>
+            <svg
+              className="h-6 w-6 text-blue-700"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {/* LinkedIn icon */}
+            </svg>
           </button>
         </div>
-      </form>
-    </section>
-    </div>
-    
-    <Footer/>
+
+        {/* Author Bio */}
+        <section className="mt-12 border-t border-gray-200 pt-12">
+          <div className="flex items-center space-x-4">
+            <div className="h-16 w-16 rounded-full bg-gray-100"></div>
+            <div>
+              <h3 className="text-lg font-bold">{article.author}</h3>
+              <p className="text-gray-600">Senior Web Developer at Tech Corp</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-12 border-t border-gray-200 pt-12">
+          <h2 className="mb-6 text-2xl font-bold">
+            Comments ({comments.length})
+          </h2>
+
+          {/* Comment Form */}
+
+          {/* Comments List */}
+          <div className="space-y-6">
+            {comments.map((comment, index) => (
+              <div key={index} className="rounded-lg bg-gray-50 p-4">
+                <div className="mb-2 flex items-center justify-between">
+                  <h3 className="font-semibold">{comment.name}</h3>
+                  <span className="text-sm text-gray-500">{comment.date}</span>
+                </div>
+                <p className="whitespace-pre-wrap text-gray-700">
+                  {comment.text}
+                </p>
+              </div>
+            ))}
+
+            {comments.length === 0 && (
+              <p className="py-4 text-center text-gray-500">
+                No comments yet. Be the first to comment!
+              </p>
+            )}
+          </div>
+          <form onSubmit={handleSubmit} className="mb-8">
+            <div className="grid gap-4">
+              <input
+                type="text"
+                placeholder="Your name"
+                value={newComment.name}
+                onChange={(e) =>
+                  setNewComment({ ...newComment, name: e.target.value })
+                }
+                className="w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+              <textarea
+                placeholder="Write your comment..."
+                value={newComment.text}
+                onChange={(e) =>
+                  setNewComment({ ...newComment, text: e.target.value })
+                }
+                className="h-32 w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+              <button
+                type="submit"
+                className="self-end rounded-lg bg-blue-600 px-6 py-2 text-white transition-colors hover:bg-blue-700"
+              >
+                Post Comment
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <Footer />
     </>
   );
 };
-
 
 export default Article;
