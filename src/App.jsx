@@ -2,10 +2,7 @@ import React, { useState } from "react";
 
 import logo from "./logo.svg";
 import poweredBy from "./powered-by-vitawind-dark.png";
-import Header from "./components/Header"
-import Footer from "./components/Footer"
-import Sections from "./components/Sections"
-import Hero from "./components/Hero"
+ import Sections from "./components/Sections"
 import Article from "./Article"
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
@@ -19,7 +16,7 @@ function App() {
     
          <Switch>
         <Route exact  path="/" component={Sections} />
-        <Route exact path="/article" component={Article} />
+        <Route exact path="/article/:id" component={Article} />
       </Switch>
     </Router>
    

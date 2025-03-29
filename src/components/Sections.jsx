@@ -44,13 +44,16 @@ const Sections = () => {
   };
 
   return (
-    <><Header/>
+    <>
+    
+    <Header/>
     <Hero/>
     <section className="container mx-auto px-6 py-10">
       <h2 className="text-3xl font-bold text-center mb-8">Latest Articles</h2>
-      <a href="/article" className="grid md:grid-cols-3 gap-8">
+      
+      <div className="grid md:grid-cols-3 gap-8">
         {articlesData.map((article) => (
-          <div key={article.id} className="bg-white shadow-md rounded-lg overflow-hidden">
+          <a key={article.id} className="bg-white shadow-md rounded-lg overflow-hidden" href={`/article/${article.id}`} >
             <img src={article.image} alt={article.title} className="w-full h-48 object-cover" />
             <div className="p-4">
               <h3 className="text-xl font-bold">{article.title}</h3>
@@ -66,9 +69,10 @@ const Sections = () => {
 
              
             </div>
-          </div>
+          </a>
         ))}
-      </a>
+      </div>
+      
     </section>
     <Footer/>
   </> 
