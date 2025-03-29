@@ -8,7 +8,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <a href="/" className="text-2xl font-bold text-gray-800">
-          MyBlog 🚀
+          Geeks Blogs
         </a>
 
         {/* Desktop Menu */}
@@ -36,7 +36,7 @@ const Header = () => {
           href="/login"
           className="hidden rounded-md bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700 md:block"
         >
-          Subscribe
+          LogIn
         </a>
 
         {/* Mobile Menu Button */}

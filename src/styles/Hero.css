@@ -1,3 +1,6 @@
+body{
+    scroll-behavior: smooth;
+}
 .hero {
     min-height: 100vh;
     padding: 2rem;
@@ -44,8 +47,18 @@
         background-image: url("https://images.pexels.com/photos/518543/pexels-photo-518543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
         background-size: cover;
         background-position: center;
-
-    
+        overflow: hidden;
+}
+.hero::before {
+      content: ''; 
+      display: block;
+      width: 100%;
+      height: 100vh;
+      background-color: black;
+      position: absolute;
+      left: 0;
+      z-index: 0;
+      filter: blur(5px) opacity(0.5);
 }
 
 

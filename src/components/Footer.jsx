@@ -27,23 +27,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 3: Google Map */}
-        <div>
-          <h2 className="text-xl font-bold">Find Us</h2>
-          <div className="mt-4">
-            <iframe 
-              className="w-full h-40 rounded-md"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093746!2d144.95592531542214!3d-37.81720974202142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f32d3b5f%3A0x3c7b1e4532b1c6!2sMelbourne!5e0!3m2!1sen!2sau!4v1613966395217!5m2!1sen!2sau" 
-              allowFullScreen 
-              loading="lazy">
-            </iframe>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Section */}
-      <div className="border-t border-gray-700 text-center py-4">
-        <p className="text-gray-400">&copy; {new Date().getFullYear()} MyBlog. All Rights Reserved.</p>
+   
       </div>
     </footer>
   );
